@@ -1,0 +1,64 @@
+Solved: 
+**A network-related or instance-specific error occurred while establishing a connection to SQL Server**
+
+I personally faced this issue when I wanted to connect my .NET Web Application to the Local Database.
+
+If you are trying to connect your Visual Studio Project with Local Database and getting this error, this is right place for you.
+
+NOTE: This may not be guaranteed solution, I have no idea if this solution exists open source but I tried to solved my error using following steps:
+
+Prerequisites: If you have done any configuration in Visual Studio trying to solve this error, I request you to please uninstall the Visual Studio and reinstall it again.
+
+Even after reinstall you will face same error so try below steps.
+(But, It will make default configuration for Visual Studio).
+
+After this, run the Following Commands in the Terminal.
+(I personally have not faced any issue (some sort of side effects) after following the steps)
+
+
+Run the following code in your command prompt:
+
+1) Find the Local DB exists or not: (NOTE: Please copy your LocalDb version)
+        sqllocaldb
+
+
+2) Try to Start SQL Local DB
+        sqllocaldb s
+
+Note: If you get error to start (already running), try to stop it (using 3rd step)
+
+
+
+3) Stops My Sql Local Db Instance
+        sqllocaldb p
+
+
+4) Now try to delete the instance (please mention your version below)
+        Sqllocaldb delete (version_of_instance)
+        E.g. sqllocaldb delete 15.0.4153.1
+
+
+5) Now stop the instance using command (If error continue for next step)
+        sqllocaldb p
+
+
+6) Finally Delete localdb using
+        Sqllocaldb delete
+
+
+7) Create it again using
+        Sqllocaldb create
+
+8) Start the service again and it works
+        sqllocaldb s
+
+
+
+I hope after running following steps, you will be able to connect visual studio projects with your local db.
+
+Again this is not guaranteed but it has helped many of my friends' and wish the same for you.
+
+
+
+by: Aadi.7
+
